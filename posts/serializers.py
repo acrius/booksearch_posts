@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import HyperlinkedModelSerializer
+from taggit_serializer.serializers import TaggitSerializer, TagListSerializerField
 
 from .models import Post, Comment
 
@@ -10,8 +11,9 @@ class UserSerializer(HyperlinkedModelSerializer):
         fields = ('id', 'username', 'date_joined', 'url')
 
 
-class PostSerializer(HyperlinkedModelSerializer):
+class PostSerializer(HyperlinkedModelSerializer, TaggitSerializer):
     owner = UserSerializer()
+    tags = TagListSerializerField()
 
     class Meta:
         model = Post

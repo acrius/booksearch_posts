@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import datetime
 
-from secrets import SECRET_KEY
+from .secrets import SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'allauth',
     'allauth.account',
+    'taggit',
+    'taggit_serializer'
 ]
 
 MIDDLEWARE = [

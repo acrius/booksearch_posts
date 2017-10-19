@@ -1,6 +1,8 @@
 from django.db.models import Model, CharField, TextField,\
                              DateTimeField, ForeignKey
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
+
 
 class Post(Model):
     class Meta:
@@ -11,7 +13,7 @@ class Post(Model):
     publication_date = DateTimeField('Date of publish.', auto_now_add=True,
                                      blank=True)
     owner = ForeignKey(User)
-    tags = TextField()
+    tags = TaggableManager()
 
 class Comment(Model):
     class Meta:
