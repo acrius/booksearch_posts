@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'taggit',
-    'taggit_serializer'
+    'taggit_serializer',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +138,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 10
 }
 
