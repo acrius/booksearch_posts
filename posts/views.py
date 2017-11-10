@@ -7,13 +7,14 @@ from .serializers import PostSerializer, CommentSerializer, UserSerializer
 from .permissions import IsOwnerOrReadOnly, ReadOnly
 from .pagination import CommentPagination
 
-class PostViewSet(ModelViewSet):
+
+class PostsViewSet(ModelViewSet):
     queryset = Post.objects.all().order_by('-publication_date')
     serializer_class = PostSerializer
     permission_classes = (ReadOnly, )
 
 
-class CommentViewSet(ModelViewSet):
+class CommentsViewSet(ModelViewSet):
     queryset = Comment.objects.all().order_by('-publication_date')
     serializer_class = CommentSerializer
     permission_classes = (IsOwnerOrReadOnly, )
@@ -25,7 +26,7 @@ class CommentViewSet(ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-class UserViewSet(ModelViewSet):
+class UsersViewSet(ModelViewSet):
     queryset = User.objects.all().order_by('id')
     serializer_class = UserSerializer
     permission_classes = (ReadOnly, )

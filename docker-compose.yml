@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  bookseeker_posts_database:
+    container_name: bookseeker_posts_database
+    image: postgres
+    POSTGRES_USER: $POSTGRES_USER
+    

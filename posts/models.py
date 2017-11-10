@@ -9,6 +9,7 @@ class Post(Model):
         ordering = ('publication_date',)
 
     title = CharField(max_length=200)
+    preview = TextField()
     content = TextField()
     publication_date = DateTimeField('Date of publish.', auto_now_add=True,
                                      blank=True)
